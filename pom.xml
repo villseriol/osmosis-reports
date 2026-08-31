@@ -4,13 +4,33 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.e4180</groupId>
-  <artifactId>osmosis-example</artifactId>
+  <groupId>io.github.villseriol</groupId>
+  <artifactId>osmosis-reports</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0</version>
 
-  <name>osmosis-plexus</name>
-  <url>http://www.example.com</url>
+  <name>osmosis-reports</name>
+  <inceptionYear>2026</inceptionYear>
+  <url>https://osmosis.villseriol.org/</url>
+  <organization>
+    <name>Villseriol</name>
+    <url>https://www.villseriol.org</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>EY4180</id>
+      <name>EY4180</name>
+      <email>ey4180@villseriol.org</email>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>GNU General Public License v3.0</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,18 +38,6 @@
     <maven.compiler.target>17</maven.compiler.target>
     <osmosis.version>0.48.3</osmosis.version>
   </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.11.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <!-- Source: https://mvnrepository.com/artifact/org.openstreetmap.osmosis/osmosis-core -->
@@ -52,8 +60,8 @@
   <build>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
-        <targetPath>${project.build.directory}/filtered-resources</targetPath>
+        <directory>${project.basedir}</directory>
+        <targetPath>META-INF</targetPath>
         <includes>
           <include>plugin.xml</include>
         </includes>
@@ -61,11 +69,21 @@
       </resource>
 
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>${project.basedir}</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE</include>
+          <include>THIRD_PARTY_NOTICES</include>
+        </includes>
         <filtering>false</filtering>
-        <excludes>
-          <exclude>plugin.xml</exclude>
-        </excludes>
+      </resource>
+
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>version.properties</include>
+        </includes>
+        <filtering>true</filtering>
       </resource>
     </resources>
 

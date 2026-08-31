@@ -5,21 +5,23 @@
     "singleQuote": true,
     "overrides": [
         {
-            "files": [
-                "**/*.yml",
-                "**/*.yaml"
-            ],
+            "files": ["**/*.yml", "**/*.yaml"],
             "options": {
                 "tabWidth": 2
             }
         },
         {
-            "files": [
-                "**/*.md"
-            ],
+            "files": ["**/*.md"],
             "options": {
                 "proseWrap": "always",
                 "printWidth": 100
+            }
+        },
+        {
+            "files": ["**/*.json"],
+            "options": {
+                "tabWidth": 2,
+                "printWidth": 120
             }
         }
     ]
