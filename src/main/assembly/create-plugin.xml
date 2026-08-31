@@ -26,9 +26,11 @@
 
     <fileSets>
         <fileSet>
-            <directory>${project.build.directory}/filtered-resources</directory>
+            <directory>${project.build.outputDirectory}/META-INF</directory>
             <outputDirectory>/</outputDirectory>
             <includes>
+                <include>LICENSE</include>
+                <include>THIRD_PARTY_NOTICES</include>
                 <include>plugin.xml</include>
             </includes>
         </fileSet>
