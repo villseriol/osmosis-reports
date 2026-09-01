@@ -1,5 +1,5 @@
 // This software is released into the Public Domain.  See copying.txt for details.
-package io.github.villseriol.v0_6.loader;
+package io.github.villseriol.osmosis.reports.v0_6.loader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,7 +15,6 @@ import io.github.villseriol.osmosis.reports.v0_6.config.OsmosisReportsConfig;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportAlias;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportNode;
-import io.github.villseriol.osmosis.reports.v0_6.loader.XmlLoader;
 
 
 public class XmlLoaderTest extends AbstractDataTest {
