@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis %VERSION%">
+ <node id="1901864597" visible="true" version="12" changeset="176832989" timestamp="2026-01-04T19:29:41Z" user="aaei924" uid="10626814" lat="35.7501777" lon="139.7373997">
+  <tag k="name" v="飛鳥山"/>
+  <tag k="name:en" v="Asukayama"/>
+  <tag k="name:es" v="Asukayama"/>
+  <tag k="name:ja" v="飛鳥山"/>
+  <tag k="name:ja-Hira" v="あすかやま"/>
+  <tag k="name:ja_rm" v="Asukayama"/>
+  <tag k="name:ko" v="아스카야마"/>
+  <tag k="operator" v="東京都交通局"/>
+  <tag k="public_transport" v="station"/>
+  <tag k="railway" v="station"/>
+  <tag k="ref" v="SA17"/>
+  <tag k="start_date" v="1911-08-20"/>
+  <tag k="tram" v="yes"/>
+  <tag k="wikidata" v="Q4811868"/>
+  <tag k="wikipedia" v="ja:飛鳥山停留所"/>
+ </node>
+</osm>
