@@ -18,6 +18,9 @@ public class ReportNode {
     @JacksonXmlProperty(isAttribute = true, localName = "alias")
     private ReportAlias alias;
 
+    @JacksonXmlProperty(isAttribute = true, localName = "format")
+    private ReportFormat format;
+
     @JacksonXmlProperty(isAttribute = true, localName = "output-path")
     private String outputPath;
 
@@ -28,6 +31,16 @@ public class ReportNode {
 
     public void setOutputPath(String outputPath) {
         this.outputPath = outputPath;
+    }
+
+
+    public ReportFormat getFormat() {
+        return format;
+    }
+
+
+    public void setFormat(ReportFormat format) {
+        this.format = format;
     }
 
 

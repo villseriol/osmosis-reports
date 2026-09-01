@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <report-list>
-    <report alias="character-frequency" output-path="character-frequency.xlsx">
+    <report alias="character-frequency" format="excel" output-path="character-frequency.xlsx">
       <tag-list>
         <tag key="name" />
       </tag-list>

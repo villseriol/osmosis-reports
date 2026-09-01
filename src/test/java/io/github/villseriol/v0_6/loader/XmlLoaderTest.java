@@ -13,6 +13,7 @@ import org.openstreetmap.osmosis.testutil.AbstractDataTest;
 
 import io.github.villseriol.osmosis.reports.v0_6.config.OsmosisReportsConfig;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportAlias;
+import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportNode;
 import io.github.villseriol.osmosis.reports.v0_6.loader.XmlLoader;
 
@@ -43,6 +44,7 @@ public class XmlLoaderTest extends AbstractDataTest {
 
         ReportNode report = config.getReports().get(0);
         assertEquals(ReportAlias.CHARACTER_FREQUENCY, report.getAlias());
+        assertEquals(ReportFormat.EXCEL, report.getFormat());
         assertEquals("character-frequency.xlsx", report.getOutputPath());
         assertEquals(1, report.getTags().size());
         assertEquals("name", report.getTags().get(0).getKey());
@@ -60,6 +62,7 @@ public class XmlLoaderTest extends AbstractDataTest {
 
         ReportNode report = config.getReports().get(0);
         assertNull(report.getAlias());
+        assertNull(report.getFormat());
         assertNull(report.getOutputPath());
         assertNotNull(report.getTags());
         assertTrue(report.getTags().isEmpty());
