@@ -12,6 +12,12 @@ import org.openstreetmap.osmosis.testutil.AbstractDataTest;
 
 
 public class CreateReportPluginLoaderTest extends AbstractDataTest {
+    /**
+     * The unicode blocks that we are expecting change depending on the Java
+     * version. This is designed to be compatible with Java 17.
+     *
+     * @throws IOException
+     */
     @Test
     public void testTrainStationNode() throws IOException {
         File sourceFile = dataUtils.createDataFile("v0_6/train-station-a/1901864597.xml");
@@ -36,6 +42,12 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
     }
 
 
+    /**
+     * The unicode blocks that we are expecting change depending on the Java
+     * version. This is designed to be compatible with Java 17.
+     *
+     * @throws IOException
+     */
     @Test
     public void testHighwayWay() throws IOException {
         File sourceFile = dataUtils.createDataFile("v0_6/highway-a/28127324.xml");
