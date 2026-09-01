@@ -10,7 +10,7 @@ import org.openstreetmap.osmosis.core.plugin.PluginLoader;
 import io.github.villseriol.osmosis.reports.v0_6.CreateReportTaskFactory;
 
 
-public class ExamplePluginLoader implements PluginLoader {
+public class CreateReportPluginLoader implements PluginLoader {
     /**
      * {@inheritDoc}
      */

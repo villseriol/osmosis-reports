@@ -10,7 +10,7 @@ import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
 
 @JsonRootName(value = "configuration")
-public class OsmosisReportsConfig {
+public class CreateReportConfig {
     @JacksonXmlElementWrapper(localName = "report-list")
     private List<ReportNode> reports = new ArrayList<>();
 

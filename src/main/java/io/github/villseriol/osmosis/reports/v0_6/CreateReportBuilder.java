@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import io.github.villseriol.osmosis.reports.v0_6.config.OsmosisReportsConfig;
+import io.github.villseriol.osmosis.reports.v0_6.config.CreateReportConfig;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportNode;
 import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterGroupFrequencyReportGenerator;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
@@ -17,9 +17,9 @@ import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 public class CreateReportBuilder {
     private static final Logger LOG = Logger.getLogger(CreateReportBuilder.class.getName());
 
-    private final OsmosisReportsConfig configuration;
+    private final CreateReportConfig configuration;
 
-    public CreateReportBuilder(final OsmosisReportsConfig configuration) {
+    public CreateReportBuilder(final CreateReportConfig configuration) {
         super();
 
         this.configuration = configuration;

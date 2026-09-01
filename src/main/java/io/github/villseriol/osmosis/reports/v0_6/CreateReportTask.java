@@ -11,7 +11,7 @@ import org.openstreetmap.osmosis.core.OsmosisRuntimeException;
 import org.openstreetmap.osmosis.core.container.v0_6.EntityContainer;
 import org.openstreetmap.osmosis.core.task.v0_6.Sink;
 
-import io.github.villseriol.osmosis.reports.v0_6.config.OsmosisReportsConfig;
+import io.github.villseriol.osmosis.reports.v0_6.config.CreateReportConfig;
 import io.github.villseriol.osmosis.reports.v0_6.loader.XmlLoader;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -19,7 +19,7 @@ import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 public class CreateReportTask implements Sink {
     private static final Logger LOG = Logger.getLogger(CreateReportTask.class.getName());
 
-    private final OsmosisReportsConfig configuration;
+    private final CreateReportConfig configuration;
 
     private final CreateReportBuilder builder;
 
@@ -28,7 +28,7 @@ public class CreateReportTask implements Sink {
     public CreateReportTask(final String configFile) {
         LOG.log(Level.FINE, "Reports configured with " + configFile);
 
-        XmlLoader<OsmosisReportsConfig> loader = XmlLoader.getInstance(OsmosisReportsConfig.class);
+        XmlLoader<CreateReportConfig> loader = XmlLoader.getInstance(CreateReportConfig.class);
         this.configuration = loader.load(configFile);
         this.builder = new CreateReportBuilder(this.configuration);
     }
