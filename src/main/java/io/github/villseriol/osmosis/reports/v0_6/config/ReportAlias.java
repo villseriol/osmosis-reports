@@ -13,7 +13,7 @@ public enum ReportAlias {
     /**
      * TODO.
      */
-    CHARACTER_BLOCK_FREQUENCY("character-block-frequency");
+    CHARACTER_GROUP_FREQUENCY("character-group-frequency");
 
     private final String alias;
 

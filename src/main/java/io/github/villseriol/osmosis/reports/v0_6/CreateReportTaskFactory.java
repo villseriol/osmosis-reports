@@ -13,10 +13,8 @@ public class CreateReportTaskFactory extends TaskManagerFactory {
      */
     @Override
     protected TaskManager createTaskManagerImpl(TaskConfiguration taskConfig) {
-        String reportName = getStringArgument(taskConfig, "name");
-        String outputFile = getStringArgument(taskConfig, "outputFile");
+        String configFile = getStringArgument(taskConfig, "file", getDefaultStringArgument(taskConfig, "reports.xml"));
 
-        return new SinkManager(taskConfig.getId(), new CreateReportTask(reportName, outputFile),
-                taskConfig.getPipeArgs());
+        return new SinkManager(taskConfig.getId(), new CreateReportTask(configFile), taskConfig.getPipeArgs());
     }
 }
