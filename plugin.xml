@@ -13,8 +13,8 @@
     </runtime>
 
     <extension plugin-id="org.openstreetmap.osmosis.core.plugin.Core"
-        point-id="Task" id="example">
-        <parameter id="name" value="example" />
-        <parameter id="class" value="io.github.e4180.ExamplePluginLoader" />
+        point-id="Task" id="create-report">
+        <parameter id="name" value="create-report" />
+        <parameter id="class" value="io.github.villseriol.CreateReportPluginLoaderTest" />
     </extension>
 </plugin>
