@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis %VERSION%">
+ <way id="28127324" visible="true" version="34" changeset="177012286" timestamp="2026-01-09T07:09:52Z" user="aaei924" uid="10626814">
+  <nd ref="308931779"/>
+  <nd ref="6672829414"/>
+  <nd ref="1686032149"/>
+  <nd ref="6672829410"/>
+  <nd ref="562767675"/>
+  <nd ref="7985450015"/>
+  <nd ref="7986227192"/>
+  <nd ref="308930154"/>
+  <tag k="highway" v="motorway"/>
+  <tag k="lanes" v="2"/>
+  <tag k="layer" v="-1"/>
+  <tag k="maxspeed" v="60"/>
+  <tag k="name" v="首都高速中央環状線"/>
+  <tag k="name:en" v="Central Circular Route"/>
+  <tag k="name:es" v="Anillo circular C2"/>
+  <tag k="name:fr" v="Boucle centrale de l'autoroute métropolitaine"/>
+  <tag k="name:ja-Hira" v="しゅとこうそくちゅうおうかんじょうせん"/>
+  <tag k="name:ja-Latn" v="Shutokōsoku Chūō Kanjō sen"/>
+  <tag k="name:ko" v="수도고속 중앙환상선"/>
+  <tag k="name:ru" v="Центральная кольцевая дорога"/>
+  <tag k="oneway" v="yes"/>
+  <tag k="ref" v="C2"/>
+  <tag k="start_date" v="1982"/>
+  <tag k="surface" v="paved"/>
+  <tag k="tunnel" v="yes"/>
+  <tag k="tunnel:name" v="飛鳥山トンネル"/>
+  <tag k="tunnel:name:en" v="Asukayama Tunnel"/>
+  <tag k="tunnel:name:fr" v="Tunnel d'Aukayama"/>
+  <tag k="tunnel:name:ja-Hira" v="あすかやまトンネル"/>
+  <tag k="tunnel:name:ja-Latn" v="Asukayama tonneru"/>
+  <tag k="wikidata" v="Q866814"/>
+ </way>
+</osm>

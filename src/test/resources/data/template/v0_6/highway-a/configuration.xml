@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <report-list>
+    <report alias="character-group-frequency" format="yaml" output-path="%OUTPUT_PATH%">
+      <tag-list>
+        <tag key="name" />
+        <tag key="name:en" />
+        <tag key="name:es" />
+        <tag key="name:fr" />
+        <tag key="name:ja-Hira" />
+        <tag key="name:ja-Latn" />
+        <tag key="name:ko" />
+        <tag key="name:ru" />
+        <tag key="tunnel:name" />
+        <tag key="tunnel:name:en" />
+        <tag key="tunnel:name:fr" />
+        <tag key="tunnel:name:ja-Hira" />
+        <tag key="tunnel:name:ja-Latn" />
+      </tag-list>
+    </report>
+  </report-list>
+</configuration>

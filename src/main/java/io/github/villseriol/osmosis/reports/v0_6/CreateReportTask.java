@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import org.openstreetmap.osmosis.core.OsmosisRuntimeException;
 import org.openstreetmap.osmosis.core.container.v0_6.EntityContainer;
+import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.task.v0_6.Sink;
 
 import io.github.villseriol.osmosis.reports.v0_6.config.CreateReportConfig;
@@ -39,7 +40,7 @@ public class CreateReportTask implements Sink {
      */
     @Override
     public void initialize(Map<String, Object> metaData) {
-        LOG.info("initialize");
+        LOG.log(Level.FINE, "initialize");
 
         this.generators = this.builder.build();
     }
@@ -50,7 +51,7 @@ public class CreateReportTask implements Sink {
      */
     @Override
     public void complete() {
-        LOG.info("complete");
+        LOG.log(Level.FINE, "complete");
 
         for (ReportGenerator generator : generators) {
             try {
@@ -67,7 +68,7 @@ public class CreateReportTask implements Sink {
      */
     @Override
     public void close() {
-        LOG.info("close");
+        LOG.log(Level.FINE, "close");
     }
 
 
@@ -76,7 +77,11 @@ public class CreateReportTask implements Sink {
      */
     @Override
     public void process(EntityContainer entityContainer) {
-        LOG.info("process");
+        Entity entity = entityContainer.getEntity();
+
+        for (ReportGenerator generator : generators) {
+            generator.visit(entity);
+        }
     }
 
 }

@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.lang.Character.UnicodeBlock;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -17,6 +16,7 @@ import org.apache.commons.io.output.CloseShieldOutputStream;
 
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterGroupFrequencyReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.shared.HasReportWriter;
+import io.github.villseriol.osmosis.reports.v0_6.shared.UnicodeBlockOrder;
 
 
 public class CharacterGroupFrequencyReportCsv implements HasReportWriter {
@@ -36,11 +36,10 @@ public class CharacterGroupFrequencyReportCsv implements HasReportWriter {
      */
     @Override
     public void save(OutputStream out) throws IOException {
-        Map<String, Long> occurrences = new TreeMap<>();
+        Map<String, Long> occurrences = new LinkedHashMap<>();
 
-        for (Map.Entry<UnicodeBlock, Long> occurrence : model.getOccurrences().entrySet()) {
-            occurrences.put(occurrence.getKey().toString(), occurrence.getValue());
-        }
+        model.getOccurrences().entrySet().stream().sorted(UnicodeBlockOrder.<Long>byEntryStart())
+                .forEach(occurrence -> occurrences.put(occurrence.getKey().toString(), occurrence.getValue()));
 
         Writer writer = new BufferedWriter(
                 new OutputStreamWriter(CloseShieldOutputStream.wrap(out), StandardCharsets.UTF_8));
