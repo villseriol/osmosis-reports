@@ -4,8 +4,6 @@ package io.github.villseriol.osmosis.reports.v0_6.config;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import tools.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -18,29 +16,28 @@ public class ReportNode {
     private List<TagNode> tags = new ArrayList<>();
 
     @JacksonXmlProperty(isAttribute = true, localName = "alias")
-    private final ReportAlias alias;
+    private ReportAlias alias;
 
     @JacksonXmlProperty(isAttribute = true, localName = "output-path")
-    private final String outputPath;
-
-    @JsonCreator
-    public ReportNode(
-            @JsonProperty(value = "alias", required = true)
-            @JacksonXmlProperty(isAttribute = true, localName = "alias") ReportAlias alias,
-            @JsonProperty(value = "output-path", required = true)
-            @JacksonXmlProperty(isAttribute = true, localName = "output-path") String outputPath) {
-        this.alias = alias;
-        this.outputPath = outputPath;
-    }
-
+    private String outputPath;
 
     public String getOutputPath() {
         return outputPath;
     }
 
 
+    public void setOutputPath(String outputPath) {
+        this.outputPath = outputPath;
+    }
+
+
     public ReportAlias getAlias() {
         return alias;
+    }
+
+
+    public void setAlias(ReportAlias alias) {
+        this.alias = alias;
     }
 
 
