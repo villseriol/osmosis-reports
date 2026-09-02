@@ -24,8 +24,11 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         File expectedFile = dataUtils.createDataFile("v0_6/train-station-a/expected-character-group-frequency.yaml");
         File outputFile = dataUtils.newFile();
 
+        File expectedCharacterFile = dataUtils.createDataFile("v0_6/train-station-a/expected-character-frequency.csv");
+        File outputCharacterFile = dataUtils.newFile();
+
         File configFile = dataUtils.createDataFile("v0_6/train-station-a/configuration.xml");
-        writeOutputPath(configFile, outputFile);
+        writeOutputPaths(configFile, outputFile, outputCharacterFile);
 
         // @formatter:off
         Osmosis.run(new String[] {
@@ -39,6 +42,7 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         // @formatter:on
 
         dataUtils.compareFiles(outputFile, expectedFile);
+        dataUtils.compareFiles(outputCharacterFile, expectedCharacterFile);
     }
 
 
@@ -54,8 +58,11 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         File expectedFile = dataUtils.createDataFile("v0_6/highway-a/expected-character-group-frequency.yaml");
         File outputFile = dataUtils.newFile();
 
+        File expectedCharacterFile = dataUtils.createDataFile("v0_6/highway-a/expected-character-frequency.csv");
+        File outputCharacterFile = dataUtils.newFile();
+
         File configFile = dataUtils.createDataFile("v0_6/highway-a/configuration.xml");
-        writeOutputPath(configFile, outputFile);
+        writeOutputPaths(configFile, outputFile, outputCharacterFile);
 
         // @formatter:off
         Osmosis.run(new String[] {
@@ -69,16 +76,20 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         // @formatter:on
 
         dataUtils.compareFiles(outputFile, expectedFile);
+        dataUtils.compareFiles(outputCharacterFile, expectedCharacterFile);
     }
 
 
     /**
-     * Points the report configuration at the temporary output file.
+     * Points each report in the configuration at its temporary output file.
      */
-    private void writeOutputPath(final File configFile, final File outputFile) throws IOException {
+    private void writeOutputPaths(final File configFile, final File outputFile, final File outputCharacterFile)
+            throws IOException {
         String configuration = Files.readString(configFile.toPath(), StandardCharsets.UTF_8);
 
-        Files.writeString(configFile.toPath(), configuration.replace("%OUTPUT_PATH%", outputFile.getPath()),
-                StandardCharsets.UTF_8);
+        configuration = configuration.replace("%OUTPUT_PATH_CHARACTER_FREQUENCY_CSV%", outputCharacterFile.getPath());
+        configuration = configuration.replace("%OUTPUT_PATH_CHARACTER_GROUP_FREQUENCY_YAML%", outputFile.getPath());
+
+        Files.writeString(configFile.toPath(), configuration, StandardCharsets.UTF_8);
     }
 }

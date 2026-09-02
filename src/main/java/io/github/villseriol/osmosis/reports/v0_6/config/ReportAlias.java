@@ -13,6 +13,10 @@ public enum ReportAlias {
     /**
      * TODO.
      */
+    CHARACTER_GROUP_EXAMPLES("character-group-examples"),
+    /**
+     * TODO.
+     */
     CHARACTER_GROUP_FREQUENCY("character-group-frequency");
 
     private final String alias;

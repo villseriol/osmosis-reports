@@ -21,6 +21,9 @@ public class ReportNode {
     @JacksonXmlProperty(isAttribute = true, localName = "format")
     private ReportFormat format;
 
+    @JacksonXmlProperty(isAttribute = true, localName = "range")
+    private UnicodeRange range;
+
     @JacksonXmlProperty(isAttribute = true, localName = "output-path")
     private String outputPath;
 
@@ -41,6 +44,16 @@ public class ReportNode {
 
     public void setFormat(ReportFormat format) {
         this.format = format;
+    }
+
+
+    public UnicodeRange getRange() {
+        return range;
+    }
+
+
+    public void setRange(UnicodeRange range) {
+        this.range = range;
     }
 
 

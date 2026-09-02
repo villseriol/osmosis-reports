@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import io.github.villseriol.osmosis.reports.v0_6.config.CreateReportConfig;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportNode;
 import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterFrequencyReportGenerator;
+import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterGroupExamplesReportGenerator;
 import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterGroupFrequencyReportGenerator;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -46,6 +47,14 @@ public class CreateReportBuilder {
         switch (report.getAlias()) {
         case CHARACTER_FREQUENCY:
             return new CharacterFrequencyReportGenerator(report.getFormat(), tagWhitelist, report.getOutputPath());
+
+        case CHARACTER_GROUP_EXAMPLES:
+            if (report.getRange() == null) {
+                throw new IllegalArgumentException("Report " + report.getAlias() + " requires a range");
+            }
+
+            return new CharacterGroupExamplesReportGenerator(report.getFormat(), report.getRange().getBlock(),
+                    tagWhitelist, report.getOutputPath());
 
         case CHARACTER_GROUP_FREQUENCY:
             return new CharacterGroupFrequencyReportGenerator(report.getFormat(), tagWhitelist, report.getOutputPath());

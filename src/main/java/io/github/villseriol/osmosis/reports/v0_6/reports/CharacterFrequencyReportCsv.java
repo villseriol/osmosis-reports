@@ -24,7 +24,8 @@ public class CharacterFrequencyReportCsv implements HasReportWriter {
      */
     private static final String ID_FORMAT = "U+%04X";
 
-    private static final CSVFormat FORMAT = CSVFormat.DEFAULT.builder().setHeader("code-point", "occurrences").get();
+    private static final CSVFormat FORMAT = CSVFormat.DEFAULT.builder()
+            .setHeader("code-point", "occurrences").setRecordSeparator("\n").get();
 
     private final CharacterFrequencyReportModel model;
 
