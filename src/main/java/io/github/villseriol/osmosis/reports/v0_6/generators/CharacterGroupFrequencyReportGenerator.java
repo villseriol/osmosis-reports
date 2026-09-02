@@ -15,7 +15,6 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterGroupFrequencyReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupFrequencyReportCsv;
-import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupFrequencyReportExcel;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupFrequencyReportYaml;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -82,10 +81,6 @@ public class CharacterGroupFrequencyReportGenerator extends ReportGenerator {
         switch (format) {
         case CSV:
             new CharacterGroupFrequencyReportCsv(model).save(getOutputPath());
-            break;
-
-        case EXCEL:
-            new CharacterGroupFrequencyReportExcel(model).save(getOutputPath());
             break;
 
         case YAML:

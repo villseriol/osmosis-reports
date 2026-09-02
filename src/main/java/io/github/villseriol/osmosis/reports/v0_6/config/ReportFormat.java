@@ -13,10 +13,6 @@ public enum ReportFormat {
     /**
      * TODO.
      */
-    EXCEL("excel"),
-    /**
-     * TODO.
-     */
     YAML("yaml");
 
     private final String format;

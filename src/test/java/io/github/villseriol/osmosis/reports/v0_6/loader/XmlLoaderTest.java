@@ -43,8 +43,8 @@ public class XmlLoaderTest extends AbstractDataTest {
 
         ReportNode report = config.getReports().get(0);
         assertEquals(ReportAlias.CHARACTER_FREQUENCY, report.getAlias());
-        assertEquals(ReportFormat.EXCEL, report.getFormat());
-        assertEquals("character-frequency.xlsx", report.getOutputPath());
+        assertEquals(ReportFormat.CSV, report.getFormat());
+        assertEquals("character-frequency.csv", report.getOutputPath());
         assertEquals(1, report.getTags().size());
         assertEquals("name", report.getTags().get(0).getKey());
     }
