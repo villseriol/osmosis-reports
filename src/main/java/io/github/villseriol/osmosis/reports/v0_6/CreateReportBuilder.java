@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import io.github.villseriol.osmosis.reports.v0_6.config.CreateReportConfig;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportNode;
+import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterFrequencyReportGenerator;
 import io.github.villseriol.osmosis.reports.v0_6.generators.CharacterGroupFrequencyReportGenerator;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -43,6 +44,9 @@ public class CreateReportBuilder {
         Set<String> tagWhitelist = report.getTags().stream().map(tag -> tag.getKey()).collect(Collectors.toSet());
 
         switch (report.getAlias()) {
+        case CHARACTER_FREQUENCY:
+            return new CharacterFrequencyReportGenerator(report.getFormat(), tagWhitelist, report.getOutputPath());
+
         case CHARACTER_GROUP_FREQUENCY:
             return new CharacterGroupFrequencyReportGenerator(report.getFormat(), tagWhitelist, report.getOutputPath());
 

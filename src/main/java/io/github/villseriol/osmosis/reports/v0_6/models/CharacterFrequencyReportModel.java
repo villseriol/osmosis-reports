@@ -6,19 +6,19 @@ import java.util.Map;
 
 
 public class CharacterFrequencyReportModel {
-    private Map<Character, Long> occurrences = new HashMap<>();
+    private Map<Integer, Long> occurrences = new HashMap<>();
 
     public CharacterFrequencyReportModel() {
         super();
     }
 
 
-    public void setOccurrences(Map<Character, Long> occurrences) {
+    public void setOccurrences(Map<Integer, Long> occurrences) {
         this.occurrences = occurrences;
     }
 
 
-    public Map<Character, Long> getOccurrences() {
+    public Map<Integer, Long> getOccurrences() {
         return occurrences;
     }
 }
