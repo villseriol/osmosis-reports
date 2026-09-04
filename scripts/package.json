@@ -1,0 +1,22 @@
+{
+  "name": "@villseriol/osmosis-reports",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "EY4180",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/villseriol/osmosis-reports/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/villseriol/osmosis-reports.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "26"
+  },
+  "engineStrict": true
+}
