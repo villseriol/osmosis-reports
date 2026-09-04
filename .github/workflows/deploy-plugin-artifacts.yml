@@ -31,7 +31,7 @@ jobs:
 
   package-artifacts:
     needs: resolve-tag
-    uses: ./.github/workflows/upload-plugin-artifacts.yml
+    uses: ./.github/workflows/package-plugin-artifacts.yml
 
   create-release:
     runs-on: ubuntu-24.04

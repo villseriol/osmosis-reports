@@ -1,4 +1,4 @@
-name: Upload Plugin Artifacts
+name: Package Plugin Artifacts
 on:
   workflow_dispatch:
   workflow_call:
