@@ -7,7 +7,7 @@
   <groupId>io.github.villseriol</groupId>
   <artifactId>osmosis-reports</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <name>osmosis-reports</name>
   <inceptionYear>2026</inceptionYear>
