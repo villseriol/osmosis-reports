@@ -37,19 +37,6 @@ public class CharacterFrequencyReportYaml implements HasReportWriter {
 
 
     /**
-     * Resolves the range a code point belongs to, or {@code null} when it falls
-     * outside every known range.
-     */
-    private static UnicodeRange range(int codePoint) {
-        try {
-            return UnicodeRange.fromCodePoint(codePoint);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
-
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -57,10 +44,12 @@ public class CharacterFrequencyReportYaml implements HasReportWriter {
         Map<UnicodeRange, List<Map<String, Object>>> ranges = new EnumMap<>(UnicodeRange.class);
 
         model.getOccurrences().entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(occurrence -> {
-            UnicodeRange range = range(occurrence.getKey().intValue());
+            UnicodeRange range;
 
-            if (range == null) {
-                LOG.log(Level.WARNING, () -> "Skipping code point outside of any unicode range: "
+            try {
+                range = UnicodeRange.fromCodePoint(occurrence.getKey().intValue());
+            } catch (IllegalArgumentException e) {
+                LOG.log(Level.WARNING, e, () -> "Skipping code point outside of any unicode range: "
                         + String.format(ID_FORMAT, occurrence.getKey()));
 
                 return;
