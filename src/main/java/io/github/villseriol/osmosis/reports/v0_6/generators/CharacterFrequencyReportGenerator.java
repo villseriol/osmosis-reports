@@ -11,6 +11,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
+import io.github.villseriol.osmosis.reports.v0_6.config.UnicodeRange;
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterFrequencyReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterFrequencyReportCsv;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterFrequencyReportYaml;
@@ -31,9 +32,18 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
         this.format = format;
         this.tagWhitelist = tagWhitelist;
 
-        for (int codePoint = Character.MIN_CODE_POINT; codePoint <= Character.MAX_CODE_POINT; codePoint++) {
-            if (Character.isDefined(codePoint)) {
-                occurrences.putIfAbsent(codePoint, 0L);
+        for (UnicodeRange range : UnicodeRange.values()) {
+            int lower = Math.max(range.getLower(), 0);
+            int upper = Math.min(range.getUpper(), Character.MAX_CODE_POINT);
+
+            for (int codePoint = lower; codePoint <= upper; codePoint++) {
+                if (codePoint >= Character.MIN_SURROGATE && codePoint <= Character.MAX_SURROGATE) {
+                    continue;
+                }
+
+                if (Character.isDefined(codePoint)) {
+                    occurrences.putIfAbsent(codePoint, 0L);
+                }
             }
         }
     }

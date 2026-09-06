@@ -13,7 +13,11 @@ public enum ReportFormat {
     /**
      * TODO.
      */
-    YAML("yaml");
+    YAML("yaml"),
+    /**
+     * TODO.
+     */
+    XLSX("xlsx");
 
     private final String format;
 
