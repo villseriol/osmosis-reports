@@ -37,21 +37,6 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
 
         this.format = format;
         this.tagWhitelist = tagWhitelist;
-
-        for (UnicodeRange range : UnicodeRange.values()) {
-            int lower = Math.max(range.getLower(), 0);
-            int upper = Math.min(range.getUpper(), Character.MAX_CODE_POINT);
-
-            for (int codePoint = lower; codePoint <= upper; codePoint++) {
-                if (codePoint >= Character.MIN_SURROGATE && codePoint <= Character.MAX_SURROGATE) {
-                    continue;
-                }
-
-                if (Character.isDefined(codePoint)) {
-                    occurrences.computeIfAbsent(range, key -> new HashMap<>()).putIfAbsent(codePoint, 0L);
-                }
-            }
-        }
     }
 
 
@@ -88,10 +73,7 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
      */
     @Override
     public void generate() throws IOException {
-        // Ranges that were never seen are left out of the report entirely.
-        Map<Integer, Long> reported = occurrences.values().stream()
-                .filter(counts -> counts.values().stream().mapToLong(count -> count.longValue()).sum() > 0L)
-                .flatMap(counts -> counts.entrySet().stream())
+        Map<Integer, Long> reported = occurrences.values().stream().flatMap(counts -> counts.entrySet().stream())
                 .collect(Collectors.toMap(occurrence -> occurrence.getKey(), occurrence -> occurrence.getValue()));
 
         CharacterFrequencyReportModel model = new CharacterFrequencyReportModel();

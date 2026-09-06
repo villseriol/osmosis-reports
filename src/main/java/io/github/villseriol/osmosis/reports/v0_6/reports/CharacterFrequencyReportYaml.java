@@ -3,10 +3,8 @@ package io.github.villseriol.osmosis.reports.v0_6.reports;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +39,7 @@ public class CharacterFrequencyReportYaml implements HasReportWriter {
      */
     @Override
     public void save(OutputStream out) throws IOException {
-        Map<UnicodeRange, List<Map<String, Object>>> ranges = new EnumMap<>(UnicodeRange.class);
+        Map<UnicodeRange, Map<String, Long>> ranges = new EnumMap<>(UnicodeRange.class);
 
         model.getOccurrences().entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(occurrence -> {
             UnicodeRange range;
@@ -55,11 +53,8 @@ public class CharacterFrequencyReportYaml implements HasReportWriter {
                 return;
             }
 
-            Map<String, Object> character = new LinkedHashMap<>();
-            character.put("id", String.format(ID_FORMAT, occurrence.getKey()));
-            character.put("occurrences", occurrence.getValue());
-
-            ranges.computeIfAbsent(range, key -> new ArrayList<>()).add(character);
+            ranges.computeIfAbsent(range, key -> new LinkedHashMap<>())
+                    .put(String.format(ID_FORMAT, occurrence.getKey()), occurrence.getValue());
         });
 
         Map<String, Object> characters = new LinkedHashMap<>();

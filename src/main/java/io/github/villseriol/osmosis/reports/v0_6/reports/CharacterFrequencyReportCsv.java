@@ -20,12 +20,13 @@ import io.github.villseriol.osmosis.reports.v0_6.shared.HasReportWriter;
 
 public class CharacterFrequencyReportCsv implements HasReportWriter {
     /**
-     * Renders a code point in the {@code U+XXXX} notation, widening past four digits when required.
+     * Renders a code point in the {@code U+XXXX} notation, widening past four
+     * digits when required.
      */
     private static final String ID_FORMAT = "U+%04X";
 
-    private static final CSVFormat FORMAT = CSVFormat.DEFAULT.builder()
-            .setHeader("code-point", "occurrences").setRecordSeparator("\n").get();
+    private static final CSVFormat FORMAT = CSVFormat.DEFAULT.builder().setHeader("code-point", "occurrences")
+            .setRecordSeparator("\n").get();
 
     private final CharacterFrequencyReportModel model;
 
@@ -43,9 +44,8 @@ public class CharacterFrequencyReportCsv implements HasReportWriter {
     public void save(OutputStream out) throws IOException {
         Map<String, Long> occurrences = new LinkedHashMap<>();
 
-        model.getOccurrences().entrySet().stream().sorted(Map.Entry.comparingByKey())
-                .forEach(occurrence -> occurrences.put(String.format(ID_FORMAT, occurrence.getKey()),
-                        occurrence.getValue()));
+        model.getOccurrences().entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(
+                occurrence -> occurrences.put(String.format(ID_FORMAT, occurrence.getKey()), occurrence.getValue()));
 
         Writer writer = new BufferedWriter(
                 new OutputStreamWriter(CloseShieldOutputStream.wrap(out), StandardCharsets.UTF_8));
