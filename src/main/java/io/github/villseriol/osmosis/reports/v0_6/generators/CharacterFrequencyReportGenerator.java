@@ -2,10 +2,14 @@
 package io.github.villseriol.osmosis.reports.v0_6.generators;
 
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.openstreetmap.osmosis.core.domain.v0_6.Entity;
 import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
@@ -19,7 +23,9 @@ import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
 
 public class CharacterFrequencyReportGenerator extends ReportGenerator {
-    private final Map<Integer, Long> occurrences = new HashMap<>();
+    private static final Logger LOG = Logger.getLogger(CharacterFrequencyReportGenerator.class.getName());
+
+    private final Map<UnicodeRange, Map<Integer, Long>> occurrences = new EnumMap<>(UnicodeRange.class);
 
     private final ReportFormat format;
 
@@ -42,7 +48,7 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
                 }
 
                 if (Character.isDefined(codePoint)) {
-                    occurrences.putIfAbsent(codePoint, 0L);
+                    occurrences.computeIfAbsent(range, key -> new HashMap<>()).putIfAbsent(codePoint, 0L);
                 }
             }
         }
@@ -64,8 +70,16 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
             tag.getValue().codePoints().filter(Character::isDefined).forEach(visited::add);
         }
 
-        visited.forEach(
-                codePoint -> occurrences.merge(codePoint, 1L, (left, right) -> left.longValue() + right.longValue()));
+        visited.forEach(codePoint -> {
+            try {
+                UnicodeRange range = UnicodeRange.fromCodePoint(codePoint.intValue());
+
+                occurrences.computeIfAbsent(range, key -> new HashMap<>()).merge(codePoint, 1L,
+                        (left, right) -> left.longValue() + right.longValue());
+            } catch (IllegalArgumentException e) {
+                LOG.log(Level.FINE, e, () -> "Skipping code point outside of any unicode range: " + codePoint);
+            }
+        });
     }
 
 
@@ -74,8 +88,14 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
      */
     @Override
     public void generate() throws IOException {
+        // Ranges that were never seen are left out of the report entirely.
+        Map<Integer, Long> reported = occurrences.values().stream()
+                .filter(counts -> counts.values().stream().mapToLong(count -> count.longValue()).sum() > 0L)
+                .flatMap(counts -> counts.entrySet().stream())
+                .collect(Collectors.toMap(occurrence -> occurrence.getKey(), occurrence -> occurrence.getValue()));
+
         CharacterFrequencyReportModel model = new CharacterFrequencyReportModel();
-        model.setOccurrences(occurrences);
+        model.setOccurrences(reported);
 
         switch (format) {
         case CSV:
