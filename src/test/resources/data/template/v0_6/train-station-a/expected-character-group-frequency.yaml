@@ -38,10 +38,6 @@ groups:
   occurrences: 0
 - id: "MANDAIC"
   occurrences: 0
-- id: "SYRIAC_SUPPLEMENT"
-  occurrences: 0
-- id: "ARABIC_EXTENDED_A"
-  occurrences: 0
 - id: "DEVANAGARI"
   occurrences: 0
 - id: "BENGALI"
@@ -112,8 +108,6 @@ groups:
   occurrences: 0
 - id: "TAI_THAM"
   occurrences: 0
-- id: "COMBINING_DIACRITICAL_MARKS_EXTENDED"
-  occurrences: 0
 - id: "BALINESE"
   occurrences: 0
 - id: "SUNDANESE"
@@ -123,12 +117,6 @@ groups:
 - id: "LEPCHA"
   occurrences: 0
 - id: "OL_CHIKI"
-  occurrences: 0
-- id: "CYRILLIC_EXTENDED_C"
-  occurrences: 0
-- id: "GEORGIAN_EXTENDED"
-  occurrences: 0
-- id: "SUNDANESE_SUPPLEMENT"
   occurrences: 0
 - id: "VEDIC_EXTENSIONS"
   occurrences: 0
@@ -274,33 +262,19 @@ groups:
   occurrences: 0
 - id: "JAVANESE"
   occurrences: 0
-- id: "MYANMAR_EXTENDED_B"
-  occurrences: 0
 - id: "CHAM"
   occurrences: 0
 - id: "MYANMAR_EXTENDED_A"
   occurrences: 0
 - id: "TAI_VIET"
   occurrences: 0
-- id: "MEETEI_MAYEK_EXTENSIONS"
-  occurrences: 0
 - id: "ETHIOPIC_EXTENDED_A"
-  occurrences: 0
-- id: "LATIN_EXTENDED_E"
-  occurrences: 0
-- id: "CHEROKEE_SUPPLEMENT"
   occurrences: 0
 - id: "MEETEI_MAYEK"
   occurrences: 0
 - id: "HANGUL_SYLLABLES"
   occurrences: 1
 - id: "HANGUL_JAMO_EXTENDED_B"
-  occurrences: 0
-- id: "HIGH_SURROGATES"
-  occurrences: 0
-- id: "HIGH_PRIVATE_USE_SURROGATES"
-  occurrences: 0
-- id: "LOW_SURROGATES"
   occurrences: 0
 - id: "PRIVATE_USE_AREA"
   occurrences: 0
@@ -342,13 +316,9 @@ groups:
   occurrences: 0
 - id: "CARIAN"
   occurrences: 0
-- id: "COPTIC_EPACT_NUMBERS"
-  occurrences: 0
 - id: "OLD_ITALIC"
   occurrences: 0
 - id: "GOTHIC"
-  occurrences: 0
-- id: "OLD_PERMIC"
   occurrences: 0
 - id: "UGARITIC"
   occurrences: 0
@@ -360,39 +330,17 @@ groups:
   occurrences: 0
 - id: "OSMANYA"
   occurrences: 0
-- id: "OSAGE"
-  occurrences: 0
-- id: "ELBASAN"
-  occurrences: 0
-- id: "CAUCASIAN_ALBANIAN"
-  occurrences: 0
-- id: "LINEAR_A"
-  occurrences: 0
 - id: "CYPRIOT_SYLLABARY"
   occurrences: 0
 - id: "IMPERIAL_ARAMAIC"
-  occurrences: 0
-- id: "PALMYRENE"
-  occurrences: 0
-- id: "NABATAEAN"
-  occurrences: 0
-- id: "HATRAN"
   occurrences: 0
 - id: "PHOENICIAN"
   occurrences: 0
 - id: "LYDIAN"
   occurrences: 0
-- id: "MEROITIC_HIEROGLYPHS"
-  occurrences: 0
-- id: "MEROITIC_CURSIVE"
-  occurrences: 0
 - id: "KHAROSHTHI"
   occurrences: 0
 - id: "OLD_SOUTH_ARABIAN"
-  occurrences: 0
-- id: "OLD_NORTH_ARABIAN"
-  occurrences: 0
-- id: "MANICHAEAN"
   occurrences: 0
 - id: "AVESTAN"
   occurrences: 0
@@ -400,135 +348,23 @@ groups:
   occurrences: 0
 - id: "INSCRIPTIONAL_PAHLAVI"
   occurrences: 0
-- id: "PSALTER_PAHLAVI"
-  occurrences: 0
 - id: "OLD_TURKIC"
   occurrences: 0
-- id: "OLD_HUNGARIAN"
-  occurrences: 0
-- id: "HANIFI_ROHINGYA"
-  occurrences: 0
 - id: "RUMI_NUMERAL_SYMBOLS"
-  occurrences: 0
-- id: "YEZIDI"
-  occurrences: 0
-- id: "OLD_SOGDIAN"
-  occurrences: 0
-- id: "SOGDIAN"
-  occurrences: 0
-- id: "CHORASMIAN"
-  occurrences: 0
-- id: "ELYMAIC"
   occurrences: 0
 - id: "BRAHMI"
   occurrences: 0
 - id: "KAITHI"
   occurrences: 0
-- id: "SORA_SOMPENG"
-  occurrences: 0
-- id: "CHAKMA"
-  occurrences: 0
-- id: "MAHAJANI"
-  occurrences: 0
-- id: "SHARADA"
-  occurrences: 0
-- id: "SINHALA_ARCHAIC_NUMBERS"
-  occurrences: 0
-- id: "KHOJKI"
-  occurrences: 0
-- id: "MULTANI"
-  occurrences: 0
-- id: "KHUDAWADI"
-  occurrences: 0
-- id: "GRANTHA"
-  occurrences: 0
-- id: "NEWA"
-  occurrences: 0
-- id: "TIRHUTA"
-  occurrences: 0
-- id: "SIDDHAM"
-  occurrences: 0
-- id: "MODI"
-  occurrences: 0
-- id: "MONGOLIAN_SUPPLEMENT"
-  occurrences: 0
-- id: "TAKRI"
-  occurrences: 0
-- id: "AHOM"
-  occurrences: 0
-- id: "DOGRA"
-  occurrences: 0
-- id: "WARANG_CITI"
-  occurrences: 0
-- id: "DIVES_AKURU"
-  occurrences: 0
-- id: "NANDINAGARI"
-  occurrences: 0
-- id: "ZANABAZAR_SQUARE"
-  occurrences: 0
-- id: "SOYOMBO"
-  occurrences: 0
-- id: "PAU_CIN_HAU"
-  occurrences: 0
-- id: "BHAIKSUKI"
-  occurrences: 0
-- id: "MARCHEN"
-  occurrences: 0
-- id: "MASARAM_GONDI"
-  occurrences: 0
-- id: "GUNJALA_GONDI"
-  occurrences: 0
-- id: "MAKASAR"
-  occurrences: 0
-- id: "LISU_SUPPLEMENT"
-  occurrences: 0
-- id: "TAMIL_SUPPLEMENT"
-  occurrences: 0
 - id: "CUNEIFORM"
   occurrences: 0
 - id: "CUNEIFORM_NUMBERS_AND_PUNCTUATION"
   occurrences: 0
-- id: "EARLY_DYNASTIC_CUNEIFORM"
-  occurrences: 0
 - id: "EGYPTIAN_HIEROGLYPHS"
-  occurrences: 0
-- id: "EGYPTIAN_HIEROGLYPH_FORMAT_CONTROLS"
-  occurrences: 0
-- id: "ANATOLIAN_HIEROGLYPHS"
   occurrences: 0
 - id: "BAMUM_SUPPLEMENT"
   occurrences: 0
-- id: "MRO"
-  occurrences: 0
-- id: "BASSA_VAH"
-  occurrences: 0
-- id: "PAHAWH_HMONG"
-  occurrences: 0
-- id: "MEDEFAIDRIN"
-  occurrences: 0
-- id: "MIAO"
-  occurrences: 0
-- id: "IDEOGRAPHIC_SYMBOLS_AND_PUNCTUATION"
-  occurrences: 0
-- id: "TANGUT"
-  occurrences: 0
-- id: "TANGUT_COMPONENTS"
-  occurrences: 0
-- id: "KHITAN_SMALL_SCRIPT"
-  occurrences: 0
-- id: "TANGUT_SUPPLEMENT"
-  occurrences: 0
 - id: "KANA_SUPPLEMENT"
-  occurrences: 0
-- id: "KANA_EXTENDED_A"
-  occurrences: 0
-- id: "SMALL_KANA_EXTENSION"
-  occurrences: 0
-- id: "NUSHU"
-  occurrences: 0
-- id: "DUPLOYAN"
-  occurrences: 0
-- id: "SHORTHAND_FORMAT_CONTROLS"
   occurrences: 0
 - id: "BYZANTINE_MUSICAL_SYMBOLS"
   occurrences: 0
@@ -536,31 +372,11 @@ groups:
   occurrences: 0
 - id: "ANCIENT_GREEK_MUSICAL_NOTATION"
   occurrences: 0
-- id: "MAYAN_NUMERALS"
-  occurrences: 0
 - id: "TAI_XUAN_JING_SYMBOLS"
   occurrences: 0
 - id: "COUNTING_ROD_NUMERALS"
   occurrences: 0
 - id: "MATHEMATICAL_ALPHANUMERIC_SYMBOLS"
-  occurrences: 0
-- id: "SUTTON_SIGNWRITING"
-  occurrences: 0
-- id: "GLAGOLITIC_SUPPLEMENT"
-  occurrences: 0
-- id: "NYIAKENG_PUACHUE_HMONG"
-  occurrences: 0
-- id: "WANCHO"
-  occurrences: 0
-- id: "MENDE_KIKAKUI"
-  occurrences: 0
-- id: "ADLAM"
-  occurrences: 0
-- id: "INDIC_SIYAQ_NUMBERS"
-  occurrences: 0
-- id: "OTTOMAN_SIYAQ_NUMBERS"
-  occurrences: 0
-- id: "ARABIC_MATHEMATICAL_ALPHABETIC_SYMBOLS"
   occurrences: 0
 - id: "MAHJONG_TILES"
   occurrences: 0
@@ -576,23 +392,9 @@ groups:
   occurrences: 0
 - id: "EMOTICONS"
   occurrences: 0
-- id: "ORNAMENTAL_DINGBATS"
-  occurrences: 0
 - id: "TRANSPORT_AND_MAP_SYMBOLS"
   occurrences: 0
 - id: "ALCHEMICAL_SYMBOLS"
-  occurrences: 0
-- id: "GEOMETRIC_SHAPES_EXTENDED"
-  occurrences: 0
-- id: "SUPPLEMENTAL_ARROWS_C"
-  occurrences: 0
-- id: "SUPPLEMENTAL_SYMBOLS_AND_PICTOGRAPHS"
-  occurrences: 0
-- id: "CHESS_SYMBOLS"
-  occurrences: 0
-- id: "SYMBOLS_AND_PICTOGRAPHS_EXTENDED_A"
-  occurrences: 0
-- id: "SYMBOLS_FOR_LEGACY_COMPUTING"
   occurrences: 0
 - id: "CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B"
   occurrences: 0
@@ -600,13 +402,7 @@ groups:
   occurrences: 0
 - id: "CJK_UNIFIED_IDEOGRAPHS_EXTENSION_D"
   occurrences: 0
-- id: "CJK_UNIFIED_IDEOGRAPHS_EXTENSION_E"
-  occurrences: 0
-- id: "CJK_UNIFIED_IDEOGRAPHS_EXTENSION_F"
-  occurrences: 0
 - id: "CJK_COMPATIBILITY_IDEOGRAPHS_SUPPLEMENT"
-  occurrences: 0
-- id: "CJK_UNIFIED_IDEOGRAPHS_EXTENSION_G"
   occurrences: 0
 - id: "TAGS"
   occurrences: 0
