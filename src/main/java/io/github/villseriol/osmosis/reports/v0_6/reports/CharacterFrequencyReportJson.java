@@ -1,35 +1,23 @@
 // This software is released into the Public Domain.  See copying.txt for details.
 package io.github.villseriol.osmosis.reports.v0_6.reports;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
 import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.io.output.CloseShieldOutputStream;
 
 import io.github.villseriol.osmosis.reports.v0_6.config.UnicodeRange;
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterFrequencyReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.shared.HasReportWriter;
+import tools.jackson.core.StreamWriteFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 
-/**
- * Writes a zip archive containing one CSV per unicode range, named after the
- * range alias.
- */
-public class CharacterFrequencyReportCsv implements HasReportWriter {
-    private static final Logger LOG = Logger.getLogger(CharacterFrequencyReportCsv.class.getName());
+public class CharacterFrequencyReportJson implements HasReportWriter {
+    private static final Logger LOG = Logger.getLogger(CharacterFrequencyReportJson.class.getName());
 
     /**
      * Renders a code point in the {@code U+XXXX} notation, widening past four
@@ -37,12 +25,9 @@ public class CharacterFrequencyReportCsv implements HasReportWriter {
      */
     private static final String ID_FORMAT = "U+%04X";
 
-    private static final CSVFormat FORMAT = CSVFormat.DEFAULT.builder().setHeader("code-point", "occurrences")
-            .setRecordSeparator("\n").get();
-
     private final CharacterFrequencyReportModel model;
 
-    public CharacterFrequencyReportCsv(final CharacterFrequencyReportModel model) {
+    public CharacterFrequencyReportJson(final CharacterFrequencyReportModel model) {
         super();
 
         this.model = model;
@@ -72,22 +57,13 @@ public class CharacterFrequencyReportCsv implements HasReportWriter {
                     .put(String.format(ID_FORMAT, occurrence.getKey()), occurrence.getValue());
         });
 
-        try (ZipOutputStream zip = new ZipOutputStream(CloseShieldOutputStream.wrap(out), StandardCharsets.UTF_8)) {
-            for (Map.Entry<UnicodeRange, Map<String, Long>> range : ranges.entrySet()) {
-                zip.putNextEntry(new ZipEntry(range.getKey().getAlias() + ".csv"));
+        Map<String, Object> characters = new LinkedHashMap<>();
 
-                Writer writer = new BufferedWriter(
-                        new OutputStreamWriter(CloseShieldOutputStream.wrap(zip), StandardCharsets.UTF_8));
+        ranges.forEach((range, entries) -> characters.put(range.getAlias(), entries));
 
-                try (CSVPrinter printer = new CSVPrinter(writer, FORMAT)) {
-                    for (Map.Entry<String, Long> occurrence : range.getValue().entrySet()) {
-                        printer.printRecord(occurrence.getKey(), occurrence.getValue());
-                    }
-                }
+        JsonMapper mapper = JsonMapper.builder().disable(StreamWriteFeature.AUTO_CLOSE_TARGET).build();
 
-                zip.closeEntry();
-            }
-        }
+        mapper.writerWithDefaultPrettyPrinter().writeValue(out, characters);
     }
 
 }

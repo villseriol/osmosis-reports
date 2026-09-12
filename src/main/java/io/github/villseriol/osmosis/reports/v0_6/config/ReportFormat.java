@@ -17,6 +17,10 @@ public enum ReportFormat {
     /**
      * TODO.
      */
+    JSON("json"),
+    /**
+     * TODO.
+     */
     XLSX("xlsx");
 
     private final String format;

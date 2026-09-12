@@ -18,6 +18,7 @@ import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
 import io.github.villseriol.osmosis.reports.v0_6.config.UnicodeRange;
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterFrequencyReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterFrequencyReportCsv;
+import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterFrequencyReportJson;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterFrequencyReportYaml;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -86,6 +87,10 @@ public class CharacterFrequencyReportGenerator extends ReportGenerator {
 
         case YAML:
             new CharacterFrequencyReportYaml(model).save(getOutputPath());
+            break;
+
+        case JSON:
+            new CharacterFrequencyReportJson(model).save(getOutputPath());
             break;
 
         default:

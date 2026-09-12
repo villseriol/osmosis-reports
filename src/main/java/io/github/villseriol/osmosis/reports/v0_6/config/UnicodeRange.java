@@ -1369,4 +1369,15 @@ public enum UnicodeRange {
 
         throw new IllegalArgumentException("No unicode range for code point: " + codePoint);
     }
+
+
+    public static UnicodeRange fromBlock(UnicodeBlock block) {
+        for (UnicodeRange value : values()) {
+            if (value.block.equals(block)) {
+                return value;
+            }
+        }
+
+        throw new IllegalArgumentException("No unicode range for block: " + block);
+    }
 }

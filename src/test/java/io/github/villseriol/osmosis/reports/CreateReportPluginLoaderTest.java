@@ -1,10 +1,19 @@
 // This software is released into the Public Domain.  See copying.txt for details.
 package io.github.villseriol.osmosis.reports;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import org.junit.Test;
 import org.openstreetmap.osmosis.core.Osmosis;
@@ -24,7 +33,7 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         File expectedFile = dataUtils.createDataFile("v0_6/train-station-a/expected-character-group-frequency.yaml");
         File outputFile = dataUtils.newFile();
 
-        File expectedCharacterFile = dataUtils.createDataFile("v0_6/train-station-a/expected-character-frequency.csv");
+        File expectedCharacterDirectory = templateDirectory("v0_6/train-station-a/expected-character-frequency");
         File outputCharacterFile = dataUtils.newFile();
 
         File configFile = dataUtils.createDataFile("v0_6/train-station-a/configuration.xml");
@@ -42,7 +51,7 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         // @formatter:on
 
         dataUtils.compareFiles(outputFile, expectedFile);
-        dataUtils.compareFiles(outputCharacterFile, expectedCharacterFile);
+        compareArchive(outputCharacterFile, expectedCharacterDirectory);
     }
 
 
@@ -58,7 +67,7 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         File expectedFile = dataUtils.createDataFile("v0_6/highway-a/expected-character-group-frequency.yaml");
         File outputFile = dataUtils.newFile();
 
-        File expectedCharacterFile = dataUtils.createDataFile("v0_6/highway-a/expected-character-frequency.csv");
+        File expectedCharacterDirectory = templateDirectory("v0_6/highway-a/expected-character-frequency");
         File outputCharacterFile = dataUtils.newFile();
 
         File configFile = dataUtils.createDataFile("v0_6/highway-a/configuration.xml");
@@ -76,7 +85,47 @@ public class CreateReportPluginLoaderTest extends AbstractDataTest {
         // @formatter:on
 
         dataUtils.compareFiles(outputFile, expectedFile);
-        dataUtils.compareFiles(outputCharacterFile, expectedCharacterFile);
+        compareArchive(outputCharacterFile, expectedCharacterDirectory);
+    }
+
+
+    /**
+     * Resolves a directory of expected files from the test data templates on
+     * the classpath.
+     */
+    private File templateDirectory(final String name) throws IOException {
+        try {
+            return new File(getClass().getResource("/data/template/" + name).toURI());
+        } catch (URISyntaxException e) {
+            throw new IOException("Invalid template directory: " + name, e);
+        }
+    }
+
+
+    /**
+     * Compares each CSV in the archive against the file of the same name in the
+     * expected directory, and checks that no file is missing or extra.
+     */
+    private void compareArchive(final File archive, final File expectedDirectory) throws IOException {
+        Set<String> expectedNames = new TreeSet<>();
+        Set<String> actualNames = new TreeSet<>();
+
+        try (DirectoryStream<Path> files = Files.newDirectoryStream(expectedDirectory.toPath(), "*.csv")) {
+            files.forEach(file -> expectedNames.add(file.getFileName().toString()));
+        }
+
+        try (ZipInputStream zip = new ZipInputStream(Files.newInputStream(archive.toPath()), StandardCharsets.UTF_8)) {
+            for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip.getNextEntry()) {
+                actualNames.add(entry.getName());
+
+                File actualFile = dataUtils.newFile();
+                Files.write(actualFile.toPath(), zip.readAllBytes());
+
+                dataUtils.compareFiles(actualFile, new File(expectedDirectory, entry.getName()));
+            }
+        }
+
+        assertEquals(expectedNames, actualNames);
     }
 
 

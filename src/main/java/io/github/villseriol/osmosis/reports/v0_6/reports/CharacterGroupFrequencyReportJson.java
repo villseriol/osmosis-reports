@@ -14,15 +14,15 @@ import io.github.villseriol.osmosis.reports.v0_6.models.CharacterGroupFrequencyR
 import io.github.villseriol.osmosis.reports.v0_6.shared.HasReportWriter;
 import io.github.villseriol.osmosis.reports.v0_6.shared.UnicodeBlockOrder;
 import tools.jackson.core.StreamWriteFeature;
-import tools.jackson.dataformat.yaml.YAMLMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 
-public class CharacterGroupFrequencyReportYaml implements HasReportWriter {
-    private static final Logger LOG = Logger.getLogger(CharacterGroupFrequencyReportYaml.class.getName());
+public class CharacterGroupFrequencyReportJson implements HasReportWriter {
+    private static final Logger LOG = Logger.getLogger(CharacterGroupFrequencyReportJson.class.getName());
 
     private final CharacterGroupFrequencyReportModel model;
 
-    public CharacterGroupFrequencyReportYaml(final CharacterGroupFrequencyReportModel model) {
+    public CharacterGroupFrequencyReportJson(final CharacterGroupFrequencyReportModel model) {
         super();
 
         this.model = model;
@@ -50,9 +50,9 @@ public class CharacterGroupFrequencyReportYaml implements HasReportWriter {
             groups.put(range.getAlias(), occurrence.getValue());
         });
 
-        YAMLMapper mapper = YAMLMapper.builder().disable(StreamWriteFeature.AUTO_CLOSE_TARGET).build();
+        JsonMapper mapper = JsonMapper.builder().disable(StreamWriteFeature.AUTO_CLOSE_TARGET).build();
 
-        mapper.writeValue(out, Collections.singletonMap("groups", groups));
+        mapper.writerWithDefaultPrettyPrinter().writeValue(out, Collections.singletonMap("groups", groups));
     }
 
 }

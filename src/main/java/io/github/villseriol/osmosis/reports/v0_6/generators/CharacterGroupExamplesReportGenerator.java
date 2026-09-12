@@ -14,6 +14,7 @@ import org.openstreetmap.osmosis.core.domain.v0_6.Tag;
 import io.github.villseriol.osmosis.reports.v0_6.config.ReportFormat;
 import io.github.villseriol.osmosis.reports.v0_6.models.CharacterGroupExamplesReportModel;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupExamplesReportCsv;
+import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupExamplesReportJson;
 import io.github.villseriol.osmosis.reports.v0_6.reports.CharacterGroupExamplesReportYaml;
 import io.github.villseriol.osmosis.reports.v0_6.shared.ReportGenerator;
 
@@ -72,6 +73,10 @@ public class CharacterGroupExamplesReportGenerator extends ReportGenerator {
 
         case YAML:
             new CharacterGroupExamplesReportYaml(model).save(getOutputPath());
+            break;
+
+        case JSON:
+            new CharacterGroupExamplesReportJson(model).save(getOutputPath());
             break;
 
         default:
